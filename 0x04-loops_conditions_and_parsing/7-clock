@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script displays numbers 1 to 20 and change the numbers 4, 9, 17
+# This script displays hours from 0 to 12 and minutes from 1 to 59
 HOUR=0
 MINU=1
 while [ $HOUR -le 12 ]
