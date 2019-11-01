@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# This script displays numbers 1 to 20 and change the numbers 4, 9, 17
+I=1
+while [ $I -le 20 ]
+do
+    case $I in
+    
+     4)
+        echo $I
+        echo "bad luck from China"
+        ;;
+    9)
+        echo $I
+        echo "bad luck from Japan"
+        ;;
+    17)
+        echo $I
+        echo "bad luck from Italy"
+        ;;
+    *)
+        echo $I
+        ;;
+    esac
+    ((I += 1))
+done
