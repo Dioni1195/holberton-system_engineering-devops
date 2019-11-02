@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script displays the content of the current directory
-LIST="$(ls | cut -f 2 -d '-')"
+LIST="$(ls)"
 for i in $LIST
 do
-    echo "$i"
+    echo "$i" | cut -f 2 -d '-'
 done
