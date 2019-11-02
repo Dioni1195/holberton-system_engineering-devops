@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This script implements the fizzbuzz algorithm
+NUM=1
+for NUM in {1..100}
+do
+	if (("$NUM % 3" == 0))
+	then
+		if (("$NUM % 5" == 0))
+		then
+			echo "FizzBuzz"
+		else
+			echo "Fizz"
+		fi
+	elif (("$NUM % 5" == 0))
+	then
+		echo "Buzz"
+	else
+		echo "$NUM"
+	fi
+done
