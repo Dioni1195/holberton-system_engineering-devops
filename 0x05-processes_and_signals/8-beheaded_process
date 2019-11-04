@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # This script kills a process
-kill SIGKILL -1
+kill SIGSTOP -1
