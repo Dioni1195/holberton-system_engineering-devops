@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script print indefinitely To infinity and beyond but with a sleep signal each iteration
+invincible()
+{
+	echo "I am invincible!!!"
+}
+while ((1))
+do
+	echo "To infinity and beyond"
+	sleep 2
+	trap invincible 15
+done
