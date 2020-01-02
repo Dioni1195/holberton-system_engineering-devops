@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Install a page
+apt-get update
+apt-get -y install nginx
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+redirect="rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
+sed -i "19i $redirect" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
+new_block="error_page 404 /custom_404.html;\nlocation = /custom_404.html {\nroot /usr/share/nginx/html;\ninternal;\n}"
+sed -i "/server_name _;/a $new_block" /etc/nginx/sites-available/default
+add_header="add_header X-Served-By $HOSTNAME;\n"
+sed -i "20i $add_header" /etc/nginx/sites-available/default
+service nginx restart
