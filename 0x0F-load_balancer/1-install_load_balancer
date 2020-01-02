@@ -12,4 +12,5 @@ back="backend http_back
         server 908-web-02 34.73.128.159:80 check"
 echo "$front" >> /etc/haproxy/haproxy.cfg
 echo "$back" >> /etc/haproxy/haproxy.cfg
+echo "ENABLED=1" >> /etc/default/haproxy
 systemctl restart haproxy
