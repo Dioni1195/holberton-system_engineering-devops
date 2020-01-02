@@ -14,4 +14,4 @@ back="backend http_back
 echo "$front" >> /etc/haproxy/haproxy.cfg
 echo "$back" >> /etc/haproxy/haproxy.cfg
 echo "ENABLED=1" >> /etc/default/haproxy
-systemctl restart haproxy
+service haproxy restart
