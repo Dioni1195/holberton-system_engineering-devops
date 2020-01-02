@@ -4,8 +4,9 @@ apt-get update
 apt-get install -y haproxy=1.6.\*
 front="frontend http_front
         bind *:80
-        stats uri /haproxy?stats
-        default_backend http_back"
+        mode http
+        default_backend http_back
+       "
 back="backend http_back
         balance roundrobin
         server 908-web-01 35.185.25.151:80 check
