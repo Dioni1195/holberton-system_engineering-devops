@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 # Fix the port
-rm /etc/nginx/sites-enabled/default
-sed -i "s/ ipv6only=on;/ ipv4only=on;/g" /etc/nginx/sites-available/default
-ln /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
 sudo service nginx restart
