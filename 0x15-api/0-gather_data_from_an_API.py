@@ -17,12 +17,14 @@ if __name__ == "__main__":
     url_com = 'https://jsonplaceholder.typicode.com/'
     parm_com = 'todos?completed=true'
 
-    response_complete = requests.get(url_com + parm_com, params=data_task)
+    response_complete = requests.get("{}{}".format(url_com, parm_com),
+                                     params=data_task)
 
     url_inm = 'https://jsonplaceholder.typicode.com/'
     parm_inm = 'todos?completed=false'
 
-    response_incomplete = requests.get(url_inm + parm_inm, params=data_task)
+    response_incomplete = requests.get("{}{}".format(url_inm, parm_inm),
+                                       params=data_task)
 
     json_task_complete = response_complete.json()
     json_task_incomplete = response_incomplete.json()
