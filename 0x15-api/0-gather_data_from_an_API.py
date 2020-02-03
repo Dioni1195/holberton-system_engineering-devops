@@ -33,4 +33,4 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{}):".
           format(name, num_complete, num_complete + num_incomplete))
     for task in json_task_complete:
-        print("\t{}".format(task['title']))
+        print("\t {}".format(task['title']))
