@@ -4,35 +4,28 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    data_usr = {'id': argv[1]}
 
-    response = requests.get('https://jsonplaceholder.typicode.com/users',
-                            params=data_usr)
+    response = requests.get('https://jsonplaceholder.typicode.com/users/{}'.
+                            format(argv[1]))
 
-    json_usr = response.json()
-    name = json_usr[0]['name']
+    name = response.json()['name']
 
-    data_task = {'userId': argv[1]}
+    url = 'https://jsonplaceholder.typicode.com/todos?userId={}'\
+        .format(argv[1])
 
-    url_com = 'https://jsonplaceholder.typicode.com/'
-    parm_com = 'todos?completed=true'
+    tasks = requests.get("{}".format(url)).json()
+    tasks_com = []
+    task_im = []
+    for task in tasks:
+        if task['completed'] is True:
+            tasks_com.append(task)
+        else:
+            task_im.append(task)
 
-    response_complete = requests.get("{}{}".format(url_com, parm_com),
-                                     params=data_task)
-
-    url_inm = 'https://jsonplaceholder.typicode.com/'
-    parm_inm = 'todos?completed=false'
-
-    response_incomplete = requests.get("{}{}".format(url_inm, parm_inm),
-                                       params=data_task)
-
-    json_task_complete = response_complete.json()
-    json_task_incomplete = response_incomplete.json()
-
-    num_incomplete = len(json_task_incomplete)
-    num_complete = len(json_task_complete)
+    num_total = len(tasks)
+    num_complete = len(tasks_com)
 
     print("Employee {} is done with tasks({}/{}):".
-          format(name, num_complete, num_complete + num_incomplete))
-    for task in json_task_complete:
+          format(name, num_complete, num_total))
+    for task in tasks_com:
         print("\t {}".format(task['title']))
