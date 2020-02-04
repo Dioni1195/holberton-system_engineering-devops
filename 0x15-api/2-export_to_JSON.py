@@ -20,6 +20,6 @@ if __name__ == "__main__":
         for task in tasks:
             list_task.append({'task': task['title'],
                              'completed': task['completed'],
-                             'username': username})
+                              'username': username})
         dict_rep = {argv[1]: list_task}
         json.dump(dict_rep, jsonfile)
