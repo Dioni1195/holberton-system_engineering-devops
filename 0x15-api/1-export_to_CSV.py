@@ -16,14 +16,9 @@ if __name__ == "__main__":
 
     tasks = requests.get("{}".format(url)).json()
     with open('{}.csv'.format(argv[1]), 'w') as csvfile:
-        fieldnames = ['USER_ID', 'USERNAME',
-                      'TASK_COMPLETED_STATUS', 'TASK_TITLE']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in tasks:
             usr_id = task['userId']
             status = task['completed']
             title = task['title']
-            writer.writerow({'USER_ID': usr_id, 'USERNAME': username,
-                             'TASK_COMPLETED_STATUS': status,
-                             'TASK_TITLE': title})
+            writer.writerow([usr_id, username, status, title])
